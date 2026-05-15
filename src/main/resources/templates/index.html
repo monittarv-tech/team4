@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Stock Maintenance System</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+
+<h1>Stock Maintenance System</h1>
+
+<form action="/add" method="post">
+
+    <input type="text"
+           name="product"
+           placeholder="Enter Product"
+           required>
+
+    <button type="submit">
+        Add Product
+    </button>
+
+</form>
+
+<h2>Available Products</h2>
+
+<ul>
+
+    <li th:each="product, iter : ${products}">
+
+        <span th:text="${product}"></span>
+
+        <a th:href="@{'/delete/' + ${iter.index}}">
+            Delete
+        </a>
+
+    </li>
+
+</ul>
+
+</body>
+</html>
